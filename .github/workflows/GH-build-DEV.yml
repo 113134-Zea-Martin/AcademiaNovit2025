@@ -31,16 +31,15 @@ jobs:
           key: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            if [ -d "pipelines" ]; then
-              echo "Actualizando repositorio existente..."
-              cd pipelines
-              git pull origin main
-            else
-              echo "Clonando repositorio..."
+            if [ ! -d "pipelines" ]; then
               git clone https://github.com/novitsoftware/pipelines
-              cd pipelines
             fi
-            cd pipelines && dotnet build && cd Aplicacion && dotnet publish -c Release -o ./publish
+            
+            cd pipelines
+            git pull origin main
+            dotnet build
+            cd Aplicacion
+            dotnet publish -c Release -o ./publish
 
       - name: Send email notification
         uses: dawidd6/action-send-mail@v3
