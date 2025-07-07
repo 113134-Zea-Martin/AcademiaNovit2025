@@ -44,3 +44,4 @@ jobs:
           subject: "Pipeline completado - ${{ github.repository }}"
           body: "El pipeline se ejecutó correctamente. Detalles: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           to: mzeacardenas@gmail.com
+          from: Martin Zea
