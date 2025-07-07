@@ -37,7 +37,7 @@ jobs:
       - name: Send email notification
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.debugmail.io
+          server_address: app.debugmail.io
           server_port: 25
           username: ${{ secrets.DEBUGMAIL_USERNAME }}
           password: ${{ secrets.DEBUGMAIL_PASSWORD }}
