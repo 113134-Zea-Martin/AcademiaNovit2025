@@ -21,7 +21,7 @@ namespace AcademiaNovit.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("AcademiaNovit.Entities.Product", b =>
+            modelBuilder.Entity("AcademiaNovit.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
