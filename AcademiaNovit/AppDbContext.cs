@@ -1,4 +1,4 @@
-using AcademiaNovit.Models;
+using AcademiaNovit.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AcademiaNovit;
