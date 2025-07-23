@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  api:
+    image: ghcr.io/113134-zea-martin/appdocker:latest
+    ports:
+      - "8080:8080"
+    environment:
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=AcademiaNovitDB;Username=postgres;Password=MySecretPassword123!
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  postgres:
+    image: postgres:17.5
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: MySecretPassword123
+      POSTGRES_DB: datos
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+volumes:
+  postgres_data:
