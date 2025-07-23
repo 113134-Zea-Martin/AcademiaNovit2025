@@ -6,24 +6,28 @@ services:
     ports:
       - "8080:8080"
     environment:
-      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=AcademiaNovitDB;Username=postgres;Password=MySecretPassword123!
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=AcademiaNovitDB;Username=postgres;Password=MySecretPassword123
     deploy:
       replicas: 2
-      update_config:
-        parallelism: 1
-        delay: 10s
       restart_policy:
         condition: on-failure
+    networks:
+      - webapi-net
 
   postgres:
     image: postgres:17.5
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: MySecretPassword123!
+      POSTGRES_PASSWORD: MySecretPassword123
       POSTGRES_DB: AcademiaNovitDB
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
+    networks:
+      - webapi-net
 
 volumes:
   postgres_data:
+
+networks:
+  webapi-net:
+    driver: overlay
