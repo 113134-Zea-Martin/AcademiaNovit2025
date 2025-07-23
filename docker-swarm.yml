@@ -19,8 +19,8 @@ services:
     image: postgres:17.5
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: MySecretPassword123
-      POSTGRES_DB: datos
+      POSTGRES_PASSWORD: MySecretPassword123!
+      POSTGRES_DB: AcademiaNovitDB
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
