@@ -41,5 +41,7 @@ jobs:
         key: ${{ secrets.SERVER_PASSWORD }}
         port: ${{ secrets.SERVER_PORT }}
         script: |
+          docker swarm init || true
           docker pull ghcr.io/${{ secrets.REGISTRY_USERNAME }}/appdocker:latest
           docker stack deploy -c docker-swarm.yml webapi-stack
+
