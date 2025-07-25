@@ -43,7 +43,7 @@ jobs:
         script: |
           docker swarm init || true
           docker pull ghcr.io/${{ secrets.REGISTRY_USERNAME }}/appdocker:latest
-          docker stack rm webapi-stack || true
           docker stack deploy -c docker-swarm.yml webapi-stack
+
 
 
