@@ -4,10 +4,7 @@ services:
   api:
     image: ghcr.io/113134-zea-martin/appdocker:latest
     ports:
-      - target: 8080
-        published: 8080
-        protocol: tcp
-        mode: host 
+      - "8080:8080"
     environment:
       ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=AcademiaNovitDB;Username=postgres;Password=MySecretPassword123
     deploy:
